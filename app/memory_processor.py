@@ -28,7 +28,7 @@ class MemoryProcessor:
                     memory_create = schemas.MemoryCreate(
                         user_id=user_id,
                         content=memory.get("memory", ""),
-                        metadata={
+                        meta_data={
                             "mem0_id": memory.get("id"),
                             "type": "extracted_memory",
                             "confidence": memory.get("score", 0),

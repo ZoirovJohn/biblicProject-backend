@@ -5,7 +5,7 @@ from datetime import datetime
 class MemoryCreate(BaseModel):
     user_id: str
     content: str
-    metadata: Optional[Dict[str, Any]] = {}
+    meta_data: Optional[Dict[str, Any]] = {}  # FIXED: Changed from metadata to meta_data
     is_long_term: Optional[bool] = False
     confidence_score: Optional[float] = 0.0
     mem0_id: Optional[str] = None
@@ -14,7 +14,7 @@ class MemoryOut(BaseModel):
     id: int
     user_id: str
     content: str
-    metadata: Dict[str, Any]
+    meta_data: Dict[str, Any]  # FIXED: Changed from metadata to meta_data
     is_long_term: bool
     confidence_score: float
     mem0_id: Optional[str]
@@ -27,7 +27,7 @@ class MemoryOut(BaseModel):
 class ConversationSessionCreate(BaseModel):
     user_id: str
     title: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = {}
+    session_meta: Optional[Dict[str, Any]] = {}  # FIXED: Changed from metadata to session_meta
 
 class ConversationSessionOut(BaseModel):
     id: int
@@ -37,11 +37,12 @@ class ConversationSessionOut(BaseModel):
     message_count: int
     started_at: datetime
     last_activity: datetime
-    metadata: Dict[str, Any]
+    session_meta: Dict[str, Any]  # FIXED: Changed from metadata to session_meta
 
     class Config:
         orm_mode = True
 
+# Rest of your schemas remain the same...
 class UserProfileCreate(BaseModel):
     user_id: str
     display_name: Optional[str] = None
@@ -61,7 +62,7 @@ class UserProfileOut(BaseModel):
     class Config:
         orm_mode = True
 
-# API Input Models
+# API Input Models remain the same...
 class ChatMessage(BaseModel):
     role: str = Field(..., description="Role: 'user' or 'assistant'")
     content: str = Field(..., description="Message content")

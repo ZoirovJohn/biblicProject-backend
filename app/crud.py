@@ -29,7 +29,7 @@ def get_user_memories(db: Session, user_id: str, limit: int = 50, memory_type: O
     query = db.query(models.Memory).filter(models.Memory.user_id == user_id)
     
     if memory_type:
-        query = query.filter(models.Memory.metadata.contains({"type": memory_type}))
+        query = query.filter(models.Memory.meta_data.contains({"type": memory_type}))
     
     return query.order_by(desc(models.Memory.created_at)).limit(limit).all()
 
